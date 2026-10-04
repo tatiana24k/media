@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Психолог Алина — консультации онлайн и очно</title>
+  <!-- Font Awesome для иконок -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Сброс и базовые стили */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f8f6f4;
+      color: #2e2c2a;
+      line-height: 1.6;
+      padding: 0 20px;
+    }
+
+    /* Плавные переходы */
+    a, button {
+      transition: all 0.2s ease;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Типографика */
+    h1, h2, h3 {
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #1e1c1a;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 40px;
+      color: #1e1c1a;
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: #b7a28b;
+      border-radius: 4px;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    /* Кнопки */
+    .btn {
+      display: inline-block;
+      background: #b7a28b;
+      color: white;
+      padding: 14px 34px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      box-shadow: 0 6px 16px rgba(183, 162, 139, 0.25);
+      letter-spacing: 0.3px;
+    }
+
+    .btn:hover {
+      background: #9f8b76;
+      box-shadow: 0 10px 22px rgba(183, 162, 139, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #b7a28b;
+      color: #1e1c1a;
+      box-shadow: none;
+      padding: 12px 32px;
+    }
+
+    .btn-outline:hover {
+      background: #b7a28b;
+      color: white;
+      box-shadow: 0 8px 18px rgba(183, 162, 139, 0.3);
+    }
+
+    /* Хедер */
+    header {
+      padding: 24px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #1e1c1a;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: #b7a28b;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #3d3a37;
+      font-weight: 450;
+      font-size: 1.05rem;
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+    }
+
+    nav a:hover {
+      border-bottom-color: #b7a28b;
+      color: #1e1c1a;
+    }
+
+    /* Герой */
+    .hero {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      padding: 30px 0 40px;
+    }
+
+    .hero-content {
+      flex: 1.2;
+      min-width: 300px;
+    }
+
+    .hero-image {
+      flex: 1;
+      min-width: 280px;
+      text-align: center;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 40% 60% 40% 60% / 50% 40% 60% 50%;
+      box-shadow: 0 30px 40px -20px rgba(0, 0, 0, 0.2);
+      object-fit: cover;
+      aspect-ratio: 1/1.1;
+      background: #e3d9d0;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: #e3d9d0;
+      padding: 6px 18px;
+      border-radius: 100px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #4b3f35;
+      margin-bottom: 24px;
+      letter-spacing: 0.3px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #4b4743;
+      margin-bottom: 32px;
+      max-width: 550px;
+    }
+
+    /* О себе */
+    .about-grid {
+      display: flex;
+      gap: 50px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .about-text {
+      flex: 1.5;
+      min-width: 300px;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      color: #3d3a37;
+    }
+
+    .about-stats {
+      flex: 1;
+      min-width: 240px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      background: #fffaf5;
+      padding: 40px 32px;
+      border-radius: 48px;
+      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.05);
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .stat-icon {
+      font-size: 2.2rem;
+      color: #b7a28b;
+      width: 50px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 1.9rem;
+      font-weight: 600;
+      color: #1e1c1a;
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      color: #6b655f;
+      font-size: 1rem;
+    }
+
+    /* Услуги */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 28px;
+      margin-top: 20px;
+    }
+
+    .service-card {
+      background: #ffffff;
+      padding: 36px 28px;
+      border-radius: 32px;
+      box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s;
+      border: 1px solid #ede6df;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 40px -16px rgba(0, 0, 0, 0.15);
+      border-color: #dacfc5;
+    }
+
+    .service-icon {
+      font-size: 2.4rem;
+      color: #b7a28b;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .service-card p {
+      color: #5f5a55;
+      margin-bottom: 18px;
+      font-size: 0.98rem;
+    }
+
+    .price {
+      font-weight: 600;
+      color: #1e1c1a;
+      font-size: 1.3rem;
+      margin-top: 8px;
+      display: block;
+    }
+
+    /* Отзывы */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    .review-card {
+      background: #ffffff;
+      padding: 32px 28px;
+      border-radius: 28px;
+      box-shadow: 0 12px 30px -12px rgba(0, 0, 0, 0.06);
+      border: 1px solid #f0ebe5;
+    }
+
+    .review-text {
+      font-style: italic;
+      color: #3d3a37;
+      margin-bottom: 24px;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .review-avatar {
+      width: 50px;
+      height: 50px;
+      background: #e3d9d0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: #6b4f3a;
+      font-size: 1.2rem;
+    }
+
+    .review-name {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .review-role {
+      color: #8b857e;
+      font-size: 0.9rem;
+    }
+
+    /* Контакты */
+    .contact-wrapper {
+      display: flex;
+      gap: 50px;
+      flex-wrap: wrap;
+      background: #ffffff;
+      border-radius: 48px;
+      padding: 50px;
+      box-shadow: 0 25px 40px -18px rgba(0, 0, 0, 0.08);
+      border: 1px solid #ede6df;
+    }
+
+    .contact-info {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .contact-info p {
+      margin-bottom: 28px;
+      color: #4b4743;
+      font-size: 1.05rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 22px;
+      font-size: 1.1rem;
+    }
+
+    .contact-detail i {
+      width: 30px;
+      color: #b7a28b;
+      font-size: 1.4rem;
+    }
+
+    .contact-detail a {
+      text-decoration: none;
+      color: #1e1c1a;
+      border-bottom: 1px solid #dacfc5;
+    }
+
+    .contact-detail a:hover {
+      border-bottom-color: #b7a28b;
+    }
+
+    .contact-form {
+      flex: 1.2;
+      min-width: 280px;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+      color: #2e2c2a;
+      font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 18px;
+      border: 1.5px solid #e3d9d0;
+      background: #fefcf9;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #b7a28b;
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(183, 162, 139, 0.15);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* Футер */
+    footer {
+      text-align: center;
+      padding: 40px 0 30px;
+      color: #8b857e;
+      font-size: 0.95rem;
+      border-top: 1px solid #e3d9d0;
+      margin-top: 40px;
+    }
+
+    /* Адаптив */
+    @media (max-width: 768px) {
+      body {
+        padding: 0 12px;
+      }
+
+      .container {
+        padding: 0 16px;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        gap: 20px;
+      }
+
+      .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-image img {
+        max-width: 280px;
+      }
+
+      .about-stats {
+        padding: 30px 24px;
+      }
+
+      .contact-wrapper {
+        padding: 30px 20px;
+      }
+
+      h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      h2 {
+        text-align: center;
+        display: block;
+      }
+
+      .contact-info {
+        text-align: center;
+      }
+
+      .contact-detail {
+        justify-content: center;
+      }
+    }
+
+    /* Плавная прокрутка */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Стили для активного пункта меню (необязательно) */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Шапка -->
+    <header>
+      <div class="logo">Алина <span>·</span> психолог</div>
+      <nav>
+        <a href="#about">Обо мне</a>
+        <a href="#services">Услуги</a>
+        <a href="#reviews">Отзывы</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+    </header>
+
+    <!-- Герой -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">Гештальт-терапевт · 8 лет практики</div>
+        <h1>Спокойствие и ясность начинаются с разговора</h1>
+        <p>Помогу справиться с тревогой, выстроить здоровые отношения и найти опору внутри себя. Бережно, без осуждения и оценок.</p>
+        <a href="#contacts" class="btn">Записаться на консультацию</a>
+      </div>
+      <div class="hero-image">
+        <!-- Абстрактная заглушка вместо фото, но может быть и фото Алины. Использую красивый плейсхолдер с инициалами -->
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='440' viewBox='0 0 400 440'%3E%3Crect width='400' height='440' fill='%23e3d9d0'/%3E%3Ctext x='200' y='250' font-family='Inter, sans-serif' font-size='120' font-weight='500' fill='%23b7a28b' text-anchor='middle'%3EА%3C/text%3E%3C/svg%3E"
+             alt="Психолог Алина">
+      </div>
+    </section>
+
+    <!-- Обо мне -->
+    <section id="about" class="section">
+      <h2>Обо мне</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>Меня зовут Алина. Я — практикующий психолог, гештальт-терапевт. Окончила МГУ и прошла длительную личную терапию, потому что считаю: психолог должен быть в ресурсе, чтобы помогать другим.</p>
+          <p>В работе я соединяю бережность и глубину. Не даю советов, как жить, но помогаю услышать себя и найти собственные ответы. Работаю с тревогой, самооценкой, отношениями, детско-родительскими темами и кризисами.</p>
+          <p>Моя задача — чтобы вы ушли с ощущением, что вас поняли, и с инструментом для изменений.</p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-item">
+            <div class="stat-icon"><i class="fas fa-user-graduate"></i></div>
+            <div>
+              <div class="stat-number">8+</div>
+              <div class="stat-label">лет практики</div>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon"><i class="fas fa-smile"></i></div>
+            <div>
+              <div class="stat-number">450+</div>
+              <div class="stat-label">довольных клиентов</div>
+            </div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <div class="stat-number">1500+</div>
+              <div class="stat-label">часов консультаций</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Услуги -->
+    <section id="services" class="section">
+      <h2>Услуги и стоимость</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-comments"></i></div>
+          <h3>Индивидуальная консультация</h3>
+          <p>Работа с тревогой, самооценкой, отношениями, потерями. Онлайн или очно в Москве.</p>
+          <span class="price">5 000 ₽ / 60 мин</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-heart"></i></div>
+          <h3>Парная терапия</h3>
+          <p>Помощь парам в кризисе, улучшение коммуникации, восстановление близости.</p>
+          <span class="price">7 500 ₽ / 90 мин</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-video"></i></div>
+          <h3>Онлайн-сессия</h3>
+          <p>Удобный формат из любой точки мира. Стабильное соединение и полная конфиденциальность.</p>
+          <span class="price">4 500 ₽ / 60 мин</span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-hand-holding-heart"></i></div>
+          <h3>Первая встреча</h3>
+          <p>Знакомство, запрос, формирование гипотез. Чтобы понять, комфортно ли нам работать.</p>
+          <span class="price">3 000 ₽ / 50 мин</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section id="reviews" class="section">
+      <h2>Отзывы клиентов</h2>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-text">«Алина помогла мне выйти из затяжной депрессии. С ней безопасно, спокойно и очень бережно. Впервые почувствовала, что меня действительно слышат.»</div>
+          <div class="review-author">
+            <div class="review-avatar">М</div>
+            <div>
+              <div class="review-name">Мария</div>
+              <div class="review-role">клиент, 1,5 года терапии</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-text">«Мы с женой были на грани развода. Алина не встала ни на чью сторону, но помогла нам услышать друг друга. Сейчас мы снова вместе и счастливы.»</div>
+          <div class="review-author">
+            <div class="review-avatar">А</div>
+            <div>
+              <div class="review-name">Алексей</div>
+              <div class="review-role">парная терапия</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-text">«Работала с тревогой и паническими атаками. Уже через 3 месяца стало значительно легче. Алина дала инструменты, которые работают до сих пор.»</div>
+          <div class="review-author">
+            <div class="review-avatar">Е</div>
+            <div>
+              <div class="review-name">Екатерина</div>
+              <div class="review-role">индивидуальная терапия</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contacts" class="section">
+      <h2>Связаться со мной</h2>
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <p>Напишите мне, если чувствуете, что пора что-то менять. Отвечу лично в течение дня и предложу удобное время для первой встречи.</p>
+          <div class="contact-detail">
+            <i class="fas fa-phone-alt"></i>
+            <a href="tel:+79991234567">+7 (999) 123-45-67</a>
+          </div>
+          <div class="contact-detail">
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:alina.psy@example.com">alina.psy@example.com</a>
+          </div>
+          <div class="contact-detail">
+            <i class="fab fa-telegram-plane"></i>
+            <a href="#">@alina_psy</a>
+          </div>
+          <div class="contact-detail">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Москва, ул. Тверская, 18 (офис 42)</span>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form action="#" method="post">
+            <div class="form-group">
+              <label for="name">Ваше имя</label>
+              <input type="text" id="name" name="name" placeholder="Как к вам обращаться" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Телефон или Telegram</label>
+              <input type="text" id="phone" name="phone" placeholder="+7 (___) ___-__-__ или @username" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Сообщение (необязательно)</label>
+              <textarea id="message" name="message" placeholder="Коротко о запросе или удобное время для звонка"></textarea>
+            </div>
+            <button type="submit" class="btn" style="width:100%;">Отправить</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+      <p>© 2025 Психолог Алина. Все права защищены.</p>
+      <p style="margin-top: 12px; font-size: 0.9rem;">Информация на сайте не является публичной офертой. Конфиденциальность гарантируется.</p>
+    </footer>
+  </div>
+</body>
+</html>
